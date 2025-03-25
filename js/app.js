@@ -4,8 +4,9 @@ let nome = select('#nome-amigo');
 let listaAmigos = select('#lista-amigos');
 let sorteio = select('#lista-sorteio');
 
-window.addEventListener('keydown', (e) =>{
+nome.addEventListener('keydown', (e) =>{
         if (e.key == 'Enter') {
+            e.preventDefault();
             adicionar();
         }
 })
