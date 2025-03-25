@@ -12,28 +12,36 @@ nome.addEventListener('keydown', (e) =>{
 })
 
 function adicionar(){
-    if (listaAmigos.innerText.length == 0 && nome.value.length > 0){
-        listaAmigos.innerText = nome.value;
-        arrayAmigos.push(nome.value);
-    } else if (nome.value.length > 0) {
-        listaAmigos.innerText += `, ${nome.value}`
-        arrayAmigos.push(nome.value);
-    }
-    nome.value = '';
-    
+    if(!arrayAmigos.includes(nome.value)){
+        if (listaAmigos.innerText.length == 0 && nome.value.length > 0){
+            listaAmigos.innerText = nome.value;
+            arrayAmigos.push(nome.value);
+        } else if (nome.value.length > 0) {
+            listaAmigos.innerText += `, ${nome.value}`
+            arrayAmigos.push(nome.value);
+        }
+        nome.value = '';
+    } else{
+        alert('Já incluido!')
+    } 
 }
 
 function sortear(){
-    sorteio.innerHTML = '';
-    embaralha(arrayAmigos);
-    for(let i = 0; i<(arrayAmigos.length); i++){
-        if (i == arrayAmigos.length-1){
-            sorteio.innerHTML += `${arrayAmigos[i]} -> ${arrayAmigos[0]}<br>`
-        } else {
-            sorteio.innerHTML += `${arrayAmigos[i]} -> ${arrayAmigos[i+1]}<br>`
+    if (arrayAmigos.length > 3){
+        sorteio.innerHTML = '';
+        embaralha(arrayAmigos);
+        for(let i = 0; i<(arrayAmigos.length); i++){
+            if (i == arrayAmigos.length-1){
+                sorteio.innerHTML += `${arrayAmigos[i]} -> ${arrayAmigos[0]}<br>`
+            } else {
+                sorteio.innerHTML += `${arrayAmigos[i]} -> ${arrayAmigos[i+1]}<br>`
+            }
         }
+        arrayAmigos = [];
+    } else{
+        alert('Adicione mais pessoas no sorteio!');
     }
-    arrayAmigos = [];
+    
 }
 
 function embaralha(lista) {
