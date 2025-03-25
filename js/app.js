@@ -24,18 +24,16 @@ function adicionar(){
 }
 
 function sortear(){
-    if ((arrayAmigos.length)%2 == 0){
-        sorteio.innerHTML = '';
-        embaralha(arrayAmigos);
-        for(let i = 0; i<(arrayAmigos.length); i++){
-            if (i == arrayAmigos.length-1){
-                sorteio.innerHTML += `${arrayAmigos[i]} -> ${arrayAmigos[0]}<br>`
-            } else {
-                sorteio.innerHTML += `${arrayAmigos[i]} -> ${arrayAmigos[i+1]}<br>`
-            }
+    sorteio.innerHTML = '';
+    embaralha(arrayAmigos);
+    for(let i = 0; i<(arrayAmigos.length); i++){
+        if (i == arrayAmigos.length-1){
+            sorteio.innerHTML += `${arrayAmigos[i]} -> ${arrayAmigos[0]}<br>`
+        } else {
+            sorteio.innerHTML += `${arrayAmigos[i]} -> ${arrayAmigos[i+1]}<br>`
         }
-        arrayAmigos = [];
     }
+    arrayAmigos = [];
 }
 
 function embaralha(lista) {
